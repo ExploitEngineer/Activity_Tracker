@@ -20,8 +20,8 @@ jobs:
 
       - name: Set up Git identity
         run: |
-          git config --global user.name "ZainulabdeenOfficial"
-          git config --global user.email "zu4425@gmail.com"
+          git config --global user.name "ExploitEngineer"
+          git config --global user.email "revilwhoami0098@gmail.com.com"
 
       - name: Update activity log
         run: |
