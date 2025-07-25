@@ -33,5 +33,5 @@ jobs:
         env:
           GIT_AUTH_TOKEN: ${{ secrets.MY_PAT }}
         run: |
-          git remote set-url origin https://x-access-token:${GIT_AUTH_TOKEN}@github.com/ZainulabdeenOfficial/ZainActivityTracker.git
+          git remote set-url origin https://x-access-token:${GIT_AUTH_TOKEN}@github.com/ExploitEngineer/Activity_Tracker.git
           git push origin main
