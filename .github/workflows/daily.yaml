@@ -1,0 +1,37 @@
+name: Daily Commit Logger
+
+on:
+  schedule:
+    - cron: "0 5 * * *" # Runs daily at 10AM PKT
+  workflow_dispatch:
+
+permissions:
+  contents: write # 🔥 REQUIRED to allow push
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository with full access
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.MY_PAT }} # Use your PAT instead of GITHUB_TOKEN
+
+      - name: Set up Git identity
+        run: |
+          git config --global user.name "ZainulabdeenOfficial"
+          git config --global user.email "zu4425@gmail.com"
+
+      - name: Update activity log
+        run: |
+          echo "{\"timestamp\": \"$(date '+%Y-%m-%d %H:%M:%S')\"}" >> activity.json
+          git add activity.json
+          git commit -m "📈 Daily activity update - $(date '+%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+
+      - name: Push changes
+        env:
+          GIT_AUTH_TOKEN: ${{ secrets.MY_PAT }}
+        run: |
+          git remote set-url origin https://x-access-token:${GIT_AUTH_TOKEN}@github.com/ZainulabdeenOfficial/ZainActivityTracker.git
+          git push origin main
