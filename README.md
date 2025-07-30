@@ -1,4 +1,4 @@
-# ActivityTracker
+# Activity Tracker
 
 This is a personal activity tracking and logging system used to monitor daily progress, experimentation, and log-based productivity habits.
 
